@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المواعيد النهائية - فرع أبها</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Tajawal:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <div class="glass-container">
+        <header class="main-header">
+            <div class="header-content">
+                <div class="branch-badge">فرع أبها</div>
+                <h1>لوحة التذكيرات والمواعيد النهائية</h1>
+                <p class="subtitle">جدول المهام الأكاديمية - عام 2026</p>
+            </div>
+
+            <div class="header-widgets">
+                <div class="countdown-widget" id="countdown-widget">
+                    <span class="widget-label">الحدث القادم في:</span>
+                    <div id="countdown-timer">--:--:--:--</div>
+                    <div id="next-event-name" class="next-event-name">جاري التحميل...</div>
+                </div>
+
+                <div class="date-widget">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Active Tasks Alert Banner -->
+        <div id="active-tasks-banner" class="active-tasks-banner hidden">
+            <div class="banner-icon"><i class="fa-solid fa-bell fa-shake"></i></div>
+            <div class="banner-content">
+                <h3>مهام مفتوحة حالياً (انذار)</h3>
+                <div id="periodic-tasks-list" class="scrolling-text"></div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="ENG-103">ENG-103</button>
+            <button class="filter-btn" data-filter="IT-245">IT-245</button>
+            <button class="filter-btn" data-filter="IT-241">IT-241</button>
+            <button class="filter-btn" data-filter="MATH-251">MATH-251</button>
+            <button class="filter-btn" data-filter="IT-244">IT-244</button>
+            <button class="filter-btn" data-filter="SCI-201">SCI-201</button>
+            <div class="filter-divider"></div>
+            <button class="filter-btn" data-status="pending">قيد الانتظار</button>
+            <button class="filter-btn" data-status="completed">المكتملة</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- ENG-103 Course -->
+            <div class="course-card" data-course="ENG-103">
+                <div class="card-header eng-header">
+                    <div class="course-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <div class="course-info">
+                        <h3>ENG-103</h3>
+                        <span>Technical Writing</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item" data-id="eng103-quiz" data-date="2026-02-20T11:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-eng103-quiz">
+                                <label for="check-eng103-quiz"></label>
+                            </div>
+                            <div class="task-icon quiz"><i class="fa-solid fa-clipboard-question"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Quiz</span>
+                                <span class="task-meta">Week 4 | 5 points quiz</span>
+                                <span class="task-date">20/02/2026 <span class="time-badge">11:59 AM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-location-dot"></i> Quizzes</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="eng103-assign1" data-date="2026-03-01T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-eng103-assign1">
+                                <label for="check-eng103-assign1"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-lines"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment #1</span>
+                                <span class="task-meta">Week 5 | Written assignment</span>
+                                <span class="task-date">01/03/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-location-dot"></i> Assignments</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="eng103-disc" data-date="2026-04-05T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-eng103-disc">
+                                <label for="check-eng103-disc"></label>
+                            </div>
+                            <div class="task-icon discussion"><i class="fa-solid fa-comments"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Discussion Post</span>
+                                <span class="task-meta">Week 7 | Forum</span>
+                                <span class="task-date">05/04/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-location-dot"></i> Discussions</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="eng103-assign2" data-date="2026-04-19T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-eng103-assign2">
+                                <label for="check-eng103-assign2"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-lines"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment #2</span>
+                                <span class="task-meta">Week 9 | Written assignment</span>
+                                <span class="task-date">19/04/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-location-dot"></i> Assignments</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="eng103-assign3" data-date="2026-05-06T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-eng103-assign3">
+                                <label for="check-eng103-assign3"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-lines"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment #3</span>
+                                <span class="task-meta">Week 12 | Written assignment</span>
+                                <span class="task-date">06/05/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-location-dot"></i> Assignments</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IT-245 Course -->
+            <div class="course-card" data-course="IT-245">
+                <div class="card-header it-header">
+                    <div class="course-icon"><i class="fa-solid fa-database"></i></div>
+                    <div class="course-info">
+                        <h3>IT-245</h3>
+                        <span>Data Structure</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item" data-id="it245-db" data-date="2026-02-25T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it245-db">
+                                <label for="check-it245-db"></label>
+                            </div>
+                            <div class="task-icon discussion"><i class="fa-solid fa-comments"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Discussion Board</span>
+                                <span class="task-meta">Discussion Board</span>
+                                <span class="task-date">25/02/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it245-assign1" data-date="2026-03-03T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it245-assign1">
+                                <label for="check-it245-assign1"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-code"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 1</span>
+                                <span class="task-meta">Assignment 1</span>
+                                <span class="task-date">03/03/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it245-assign2" data-date="2026-04-28T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it245-assign2">
+                                <label for="check-it245-assign2"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-code"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 2</span>
+                                <span class="task-meta">Assignment 2</span>
+                                <span class="task-date">28/04/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it245-quiz" data-date="2026-05-05T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it245-quiz">
+                                <label for="check-it245-quiz"></label>
+                            </div>
+                            <div class="task-icon quiz"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Quiz</span>
+                                <span class="task-meta">Quiz</span>
+                                <span class="task-date">05/05/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it245-project" data-date="2026-05-05T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it245-project">
+                                <label for="check-it245-project"></label>
+                            </div>
+                            <div class="task-icon project"><i class="fa-solid fa-users"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Group Activity</span>
+                                <span class="task-meta">Project</span>
+                                <span class="task-date">05/05/2026 <span class="time-badge">11:59 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IT-241 Course -->
+            <div class="course-card" data-course="IT-241">
+                <div class="card-header os-header">
+                    <div class="course-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="course-info">
+                        <h3>IT-241</h3>
+                        <span>Operating Systems</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item" data-id="it241-db" data-date="2026-02-23T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it241-db">
+                                <label for="check-it241-db"></label>
+                            </div>
+                            <div class="task-icon discussion"><i class="fa-solid fa-comments"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Discussion Board</span>
+                                <span class="task-meta">Discussion Board</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 15/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">23/02/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it241-assign1" data-date="2026-03-01T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it241-assign1">
+                                <label for="check-it241-assign1"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-zipper"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 1</span>
+                                <span class="task-meta">Assignment 1</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 23/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">01/03/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it241-assign2" data-date="2026-04-26T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it241-assign2">
+                                <label for="check-it241-assign2"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-zipper"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 2</span>
+                                <span class="task-meta">Assignment 2</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 19/04</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">26/04/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it241-quiz" data-date="2026-05-03T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it241-quiz">
+                                <label for="check-it241-quiz"></label>
+                            </div>
+                            <div class="task-icon quiz"><i class="fa-solid fa-list-check"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Online Quiz</span>
+                                <span class="task-meta">Online Quiz</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 26/04</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">03/05/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it241-project" data-date="2026-05-03T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it241-project">
+                                <label for="check-it241-project"></label>
+                            </div>
+                            <div class="task-icon project"><i class="fa-solid fa-diagram-project"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Project</span>
+                                <span class="task-meta">Project</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 19/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">03/05/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- MATH-251 Course -->
+            <div class="course-card" data-course="MATH-251">
+                <div class="card-header math-header">
+                    <div class="course-icon"><i class="fa-solid fa-square-root-variable"></i></div>
+                    <div class="course-info">
+                        <h3>MATH-251</h3>
+                        <span>Linear Algebra</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item" data-id="math251-assign1" data-date="2026-02-21T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-math251-assign1">
+                                <label for="check-math251-assign1"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-calculator"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 1</span>
+                                <span class="task-meta">T/F and MCQ</span>
+                                <span class="task-date">21/02/2026 <span class="time-badge">11:00 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 3 > After Class</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="math251-assign2" data-date="2026-03-07T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-math251-assign2">
+                                <label for="check-math251-assign2"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-calculator"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 2</span>
+                                <span class="task-meta">T/F and MCQ</span>
+                                <span class="task-date">07/03/2026 <span class="time-badge">11:00 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 5 > After Class</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="math251-assign3" data-date="2026-05-02T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-math251-assign3">
+                                <label for="check-math251-assign3"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-calculator"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 3</span>
+                                <span class="task-meta">T/F and MCQ</span>
+                                <span class="task-date">02/05/2026 <span class="time-badge">11:00 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 10 > After Class
+                                </div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="math251-assign4" data-date="2026-05-20T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-math251-assign4">
+                                <label for="check-math251-assign4"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-calculator"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 4</span>
+                                <span class="task-meta">T/F and MCQ</span>
+                                <span class="task-date">20/05/2026 <span class="time-badge">11:00 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 13 > After Class
+                                </div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="math251-quiz" data-date="2026-05-20T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-math251-quiz">
+                                <label for="check-math251-quiz"></label>
+                            </div>
+                            <div class="task-icon quiz"><i class="fa-solid fa-infinity"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Weekly Quizzes</span>
+                                <span class="task-meta">MCQ</span>
+                                <span class="task-date">20/05/2026 <span class="time-badge">11:00 PM</span></span>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Each Week > After Class
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IT-244 Course -->
+            <div class="course-card" data-course="IT-244">
+                <div class="card-header db-header">
+                    <div class="course-icon"><i class="fa-solid fa-server"></i></div>
+                    <div class="course-info">
+                        <h3>IT-244</h3>
+                        <span>Introduction to Database</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item" data-id="it244-db" data-date="2026-02-24T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it244-db">
+                                <label for="check-it244-db"></label>
+                            </div>
+                            <div class="task-icon discussion"><i class="fa-solid fa-comments"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Discussion Board</span>
+                                <span class="task-meta">Discussion Board</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 16/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">24/02/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it244-assign1" data-date="2026-03-02T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it244-assign1">
+                                <label for="check-it244-assign1"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-code"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 1</span>
+                                <span class="task-meta">Assignment 1</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 23/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">02/03/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it244-assign2" data-date="2026-04-27T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it244-assign2">
+                                <label for="check-it244-assign2"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-file-code"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Assignment 2</span>
+                                <span class="task-meta">Assignment 2</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 20/04</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">27/04/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it244-quiz" data-date="2026-05-04T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it244-quiz">
+                                <label for="check-it244-quiz"></label>
+                            </div>
+                            <div class="task-icon quiz"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Online Quiz</span>
+                                <span class="task-meta">Online Quiz</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 27/04</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">04/05/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="it244-project" data-date="2026-05-04T23:59:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-it244-project">
+                                <label for="check-it244-project"></label>
+                            </div>
+                            <div class="task-icon project"><i class="fa-solid fa-users"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Group Activity</span>
+                                <span class="task-meta">Project</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 19/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">04/05/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-globe"></i> BlackBoard</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SCI-201 Course -->
+            <div class="course-card" data-course="SCI-201">
+                <div class="card-header sci-header">
+                    <div class="course-icon"><i class="fa-solid fa-atom"></i></div>
+                    <div class="course-info">
+                        <h3>SCI-201</h3>
+                        <span>General Physics 2</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="task-list">
+                        <li class="task-item" data-id="sci201-task1" data-date="2026-02-14T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-sci201-task1">
+                                <label for="check-sci201-task1"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-flask"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Task 1</span>
+                                <span class="task-meta">Assignment 1</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 04/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">14/02/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 2 > After Class</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="sci201-task2" data-date="2026-03-07T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-sci201-task2">
+                                <label for="check-sci201-task2"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-flask"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Task 2</span>
+                                <span class="task-meta">Assignment 2</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 25/02</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">07/03/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 5 > After Class</div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="sci201-task3" data-date="2026-05-02T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-sci201-task3">
+                                <label for="check-sci201-task3"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-flask"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Task 3</span>
+                                <span class="task-meta">Assignment 3</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 22/04</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">02/05/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 9&10 > After Class
+                                </div>
+                            </div>
+                        </li>
+                        <li class="task-item" data-id="sci201-task4" data-date="2026-05-20T23:00:00">
+                            <div class="task-check">
+                                <input type="checkbox" id="check-sci201-task4">
+                                <label for="check-sci201-task4"></label>
+                            </div>
+                            <div class="task-icon assignment"><i class="fa-solid fa-flask"></i></div>
+                            <div class="task-details">
+                                <span class="task-name">Task 4</span>
+                                <span class="task-meta">Assignment 4</span>
+                                <div class="date-range">
+                                    <span class="start-date"><i class="fa-regular fa-calendar-plus"></i> 13/05</span>
+                                    <span class="separator"><i class="fa-solid fa-arrow-left"></i></span>
+                                    <span class="end-date">20/05/2026</span>
+                                </div>
+                                <div class="task-location"><i class="fa-solid fa-school"></i> Week 13 > After Class
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="empty-state hidden">
+            <i class="fa-solid fa-check-circle"></i>
+            <h3>لا توجد مهام مطابقة للفلتر</h3>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>تم التصميم بواسطة <span>طلاب فرع أبها</span> | جميع الحقوق محفوظة © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
